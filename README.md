@@ -5,3 +5,11 @@
 </p>
 
 # BlueBlood Trading Plans (Frontend)
+
+## Add secrets
+
+```bash
+now secret add stripe-key <...>
+now secret add plan-basic <...>
+now secret add plan-pro <...>
+```
