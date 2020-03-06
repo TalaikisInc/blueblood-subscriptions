@@ -1,4 +1,9 @@
 {
     "name": "blueblood-subscriptions",
-    "alias": ["subscriptions.talaikis.com"]
+    "alias": ["subscriptions.talaikis.com"],
+    "env": {
+        "REACT_APP_STRIPE_PUBLISHABLE_KEY": "",
+        "REACT_APP_PLAN_BASIC": "",
+        "REACT_APP_PLAN_PRO": ""
+    }
 }
