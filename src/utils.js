@@ -1,14 +1,12 @@
 import { CardElement } from '@stripe/react-stripe-js'
 
-const BASE_PATH = 'https://blue.talaikis.com'
-
 const orderComplete = (subscription) => {
   console.log(subscription)
   return { status: subscription.status, error: null }
 }
 
 const confirmSubscription = (subscriptionId) => {
-  return fetch(`${BASE_PATH}/get-subscription`, {
+  return fetch(`${process.env.REACT_APP_GETSUB_ENDPOINT}/get-subscription`, {
     method: 'post',
     headers: {
       'Content-type': 'application/json'
@@ -49,7 +47,7 @@ const handleSubscription = (stripe, subscription) => {
 }
 
 export const createCustomer = async (stripe, paymentMethod, cardholderEmail, planId) => {
-  return fetch(`${BASE_PATH}/create-customer`, {
+  return fetch(`${process.env.REACT_APP_CREATE_ENDPOINT}/create-customer`, {
     method: 'post',
     headers: {
       'Content-Type': 'application/json'
@@ -65,6 +63,28 @@ export const createCustomer = async (stripe, paymentMethod, cardholderEmail, pla
     })
     .then(subscription => {
       handleSubscription(stripe, subscription)
+    })
+}
+
+export const cancelSubscription = (subscriptionId) => {
+  /*
+  0. write subscriptionId to dynamodb
+  1. query dynamodb by email to get subscriptionId
+  */
+  return fetch(`${process.env.REACT_APP_CANCEL_ENDPOINT}/cancel-subscription`, {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      subscriptionId
+    })
+  })
+    .then(response => {
+      return response.json()
+    })
+    .then(subscription => {
+      // handleSubscription(stripe, subscription)
     })
 }
 

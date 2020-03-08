@@ -1,15 +1,9 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
-import useStore from 'store'
+import { GoBack, GoPath } from 'components/Buttons'
 
 const PricingButton = ({ title, path }) => {
-  // eslint-disable-next-line
-  const [globalState, globalActions] = useStore()
-  const submit = (path) => {
-    globalActions.setPath(path)
-  }
-
-  return <button onClick={() => submit(path)}>{ title }</button>
+  return <Fragment><GoPath title={title} path={path} /> : <GoBack /></Fragment>
 }
 
 export default PricingButton

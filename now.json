@@ -4,7 +4,10 @@
         "env": {
             "REACT_APP_STRIPE_PUBLISHABLE_KEY": "@stripe-key",
             "REACT_APP_PLAN_BASIC": "@plan-basic",
-            "REACT_APP_PLAN_PRO": "@plan-pro"
+            "REACT_APP_PLAN_PRO": "@plan-pro",
+            "REACT_APP_CREATE_ENDPOINT": "@create-endpoint",
+            "REACT_APP_GETSUB_ENDPOINT": "@getsub-endpoint",
+            "REACT_APP_CANCEL_ENDPOINT": "@cancel-endpoint"
         }
     }
 }
